@@ -14,20 +14,6 @@
         return;
       }
 
-      /**
-       * Add CSS to the document instead of .hide(), because the element
-       * may be added dynamically after this point. Cannot delegate "load"
-       * Cannot add a class to the element to hide it.
-       */
-      $('head').once(function() {
-        //Can't use map() on obj. Core jQuery is only 1.4.4. Requires 1.6.
-        var selector = [];
-        $.each( selectors, function( index, value ) {
-          selector.push( value['context'] + ' ' + value['submit_input'] );
-        });
-        $(this).append($('<' + 'style media="all" type="text/css"' + '>' + selector.join(', ') + ' { display:none; }<' + '/style' + '>'));
-      });
-
       $.each(selectors, function (index, value) {
         var fs_context = value['context'];
         $(fs_context, context).once(function () {
