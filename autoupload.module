@@ -62,6 +62,10 @@ function autoupload_form_alter(&$form, &$form_state, $form_id) {
     }
   }
 
+  if (!is_array($settings_userdefined)) {
+    $settings_userdefined = array();
+  }
+
   $selectors = array_merge($settings_userdefined, $selectors);
 
   array_walk_recursive($selectors, 'check_plain');
